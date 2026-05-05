@@ -1,0 +1,120 @@
+import pandas as pd 
+from sklearn.feature_extraction.text import TfidfVectorizer 
+from sklearn.model_selection import train_test_split 
+from sklearn.naive_bayes import MultinomialNB 
+from sklearn.metrics import accuracy_score, 
+classification_report 
+ 
+data = { 
+    "text": [ 
+        # Politics 
+        "The prime minister announced a new economic policy   
+          today.", 
+        "Parliament passed a bill on education reforms.", 
+        "The opposition leader criticized the government’s  
+          decision.", 
+        "A new law was introduced to regulate digital 
+          privacy.", 
+        "The election campaign gathered huge crowds in 
+          Delhi.", 
+        "Government launched a scheme for rural  
+         development.", 
+7  
+        "The foreign minister met with global leaders in 
+          Geneva.", 
+        "A debate on healthcare policies was held in 
+          parliament.", 
+        "Citizens protested against the new tax policy.", 
+        "The president addressed the nation regarding 
+          reforms.", 
+ 
+        # Sports 
+        "India won the cricket match against Australia 
+          yesterday.", 
+        "The football team celebrated their victory in the 
+          finals.", 
+        "Lionel Messi scored two goals in the World Cup  
+          qualifier.", 
+        "The tennis champion advanced to the semi-final 
+          round.", 
+        "Olympic athletes trained hard for the upcoming 
+          event.", 
+        "The basketball team defeated their rivals in 
+         overtime.", 
+        "A record-breaking performance was seen in 
+         athletics.", 
+        "The coach praised the team for their hard work.", 
+        "The marathon attracted thousands of international 
+         runners.", 
+        "Fans cheered loudly during the championship game.", 
+ 
+8  
+        # Entertainment 
+        "A new Bollywood movie starring a famous actor was 
+         released.", 
+        "The award for best actress went to a rising star.", 
+        "A Netflix series gained global popularity this month.", 
+        "The concert attracted thousands of music fans.", 
+        "A director announced a sequel to the blockbuster 
+         film.", 
+        "The actor received recognition for his outstanding 
+          role.", 
+        "The film festival showcased independent short films.", 
+        "Critics praised the storytelling and visual effects.", 
+        "A celebrity shared behind-the-scenes moments 
+         online.", 
+        "Fans eagerly awaited the release of the music album.", 
+        # Weather 
+        "Heavy rainfall caused flooding in several parts of the  
+          city.", 
+        "The weather forecast predicted thunderstorms 
+         tomorrow.", 
+        "A heatwave is expected to hit northern states this  
+         week.", 
+        "Snowfall disrupted travel across the mountain  
+          region.", 
+        "Cyclone warnings were issued for coastal areas.", 
+        "Clear skies and sunshine are expected over the  
+         weekend.", 
+        "Dense fog affected morning flights at the airport.", 
+9  
+        "Monsoon rains brought relief from the summer heat.", 
+        "Strong winds damaged houses near the shoreline.", 
+        "The temperature dropped sharply due to a cold front." 
+    ], 
+    "category": ( 
+        ["Politics"]*10 + 
+        ["Sports"]*10 + 
+        ["Entertainment"]*10 + 
+        ["Weather"]*10 
+    ) 
+} 
+ 
+df = pd.DataFrame(data) 
+ 
+X_train, X_test, y_train, y_test = train_test_split( 
+    df["text"], df["category"], test_size=0.2, random_state=42 
+) 
+ 
+vectorizer = TfidfVectorizer() 
+X_train_tfidf = vectorizer.fit_transform(X_train) 
+X_test_tfidf = vectorizer.transform(X_test) 
+ 
+nb = MultinomialNB() 
+nb.fit(X_train_tfidf, y_train) 
+y_pred = nb.predict(X_test_tfidf) 
+ 
+print("Accuracy:", accuracy_score(y_test, y_pred)) 
+print("\nClassification Report:\n", 
+classification_report(y_test, y_pred)) 
+new_articles = [ 
+"The government introduced a new tax reform policy.", 
+"India defeated Pakistan in the cricket final.", 
+"The actor signed a contract for a new web series.", 
+"Heavy rains are expected in coastal regions tomorrow." 
+] 
+new_tfidf = vectorizer.transform(new_articles) 
+predictions = nb.predict(new_tfidf) 
+for article, category in zip(new_articles, predictions): 
+print(f"\nArticle: {article}\nPredicted Category: 
+{category}")
