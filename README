@@ -1,5 +1,11 @@
 # 📰 News Article Categorization using NLP
 
+## 🚀 Key Highlights
+- Built an NLP model to classify news articles into 4 categories
+- Implemented TF-IDF for feature extraction
+- Used Naïve Bayes for classification
+- Achieved classification on real-world-like data
+
 ## 📌 Overview
 This project focuses on automatically classifying news articles into categories such as **Politics, Sports, Entertainment, and Weather** using Natural Language Processing (NLP) techniques.
 
