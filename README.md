@@ -1,2 +1,81 @@
-# news-article-categorization-NLP
-News article classification using TF-IDF and Naïve Bayes
+# 📰 News Article Categorization using NLP
+
+## 🚀 Key Highlights
+- Built an NLP model to classify news articles into 4 categories
+- Implemented TF-IDF for feature extraction
+- Used Naïve Bayes for classification
+- Achieved classification on real-world-like data
+
+## 📌 Overview
+This project focuses on automatically classifying news articles into categories such as **Politics, Sports, Entertainment, and Weather** using Natural Language Processing (NLP) techniques.
+
+The system uses **TF-IDF (Term Frequency–Inverse Document Frequency)** for feature extraction and a **Naïve Bayes classifier** for prediction.
+
+---
+
+## 🎯 Objective
+- Preprocess raw text data
+- Extract features using TF-IDF
+- Train a Naïve Bayes classifier
+- Evaluate model performance
+
+---
+## Project Structure
+│
+├── notebook/ # code
+├── NLP PROJECT/ # Project documentation
+└── README.md # Project overview
+## 🧠 Methodology
+
+### 🔹 Data Collection
+- 40–60 news articles
+- Categories:
+  - Politics  
+  - Sports  
+  - Entertainment  
+  - Weather  
+
+### 🔹 Preprocessing
+- Lowercasing  
+- Tokenization  
+- Stopword removal  
+
+### 🔹 Feature Extraction
+- TF-IDF Vectorization  
+
+### 🔹 Model
+- Multinomial Naïve Bayes  
+
+---
+
+## 📊 Results
+Accuracy: 0.375
+
+Classification Report:
+                precision    recall  f1-score   support
+
+Entertainment       0.50      0.50      0.50         2
+     Politics       0.25      1.00      0.40         1
+       Sports       1.00      0.25      0.40         4
+      Weather       0.00      0.00      0.00         1
+
+     accuracy                           0.38         8
+    macro avg       0.44      0.44      0.33         8
+ weighted avg       0.66      0.38      0.38         8
+
+
+Article: The government introduced a new tax reform policy.
+Predicted Category:
+Politics
+
+Article: India defeated Pakistan in the cricket final.
+Predicted Category:
+Sports
+
+Article: The actor signed a contract for a new web series.
+Predicted Category:
+Entertainment
+
+Article: Heavy rains are expected in coastal regions tomorrow.
+Predicted Category:
+Weather
