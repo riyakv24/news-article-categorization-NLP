@@ -79,3 +79,11 @@ Entertainment
 Article: Heavy rains are expected in coastal regions tomorrow.
 Predicted Category:
 Weather
+
+Article: The actor signed a contract for a new web series.
+Predicted Category:
+Entertainment
+
+Article: Heavy rains are expected in coastal regions tomorrow.
+Predicted Category:
+Weather
